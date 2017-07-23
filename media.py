@@ -27,20 +27,37 @@ class Movie():
 
     # Get Movie Information from the The TMDb API and return an array with the info
     def getMovieInfo(self):
-        infoJson = self.getProcessedJson("https://api.themoviedb.org/3/search/movie?api_key=bb4016586720f201b8ac862369b47e87&language=en-US&query="+self.title+"&page=1&include_adult=false")
-        #Grab Movie Info (ID + Title + Poster URL)
-        movieID = infoJson['results'][0]['id']
-        movieTitle = infoJson['results'][0]['title']
-        moviePoster = "http://image.tmdb.org/t/p/w185//"+infoJson['results'][0]['poster_path']
-        #Grab Movie Trailer
-        videoJson = self.getProcessedJson("https://api.themoviedb.org/3/movie/"+str(movieID)+"/videos?api_key=bb4016586720f201b8ac862369b47e87&language=en-US")
-        movieTrailer = "https://www.youtube.com/watch?v=" + videoJson['results'][0]['key']
-        
+        # Format Movie Name 
+        formatedMovieName = self.title.replace(" ", "%20")
+        infoJson = self.getProcessedJson("https://api.themoviedb.org/3/search/movie?api_key=bb4016586720f201b8ac862369b47e87&language=en-US&query="+formatedMovieName+"&page=1&include_adult=false")
+
+        # Check if Movie Was Found
+        if len(infoJson['results']) > 0:
+            # Grab Movie Info (ID + Title + Poster URL)
+            movieID = infoJson['results'][0]['id']
+            movieTitle = infoJson['results'][0]['title']
+
+            # Check if poster image exists or not
+            if infoJson['results'][0]['poster_path'] == None:
+                moviePoster = "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png"
+                movieTrailer = "https://www.youtube.com/watch?v=eq7Adzo4QAE"
+            else:
+                moviePoster = "http://image.tmdb.org/t/p/w185//"+infoJson['results'][0]['poster_path']
+                # Grab Movie Trailer
+                videoJson = self.getProcessedJson("https://api.themoviedb.org/3/movie/"+str(movieID)+"/videos?api_key=bb4016586720f201b8ac862369b47e87&language=en-US")
+                movieTrailer = "https://www.youtube.com/watch?v=" + videoJson['results'][0]['key']
+
+        else:
+            movieTitle = "Movie Not Found"
+            moviePoster = "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png"
+            movieTrailer = "https://www.youtube.com/watch?v=eq7Adzo4QAE"
+
+                        
         movieInfo = [movieTitle, moviePoster, movieTrailer]
         return movieInfo
     
     
-    #Request + Process Json from an URL and Return it
+    # Request + Process Json from an URL and Return it
     def getProcessedJson(self, url):
         connection = urllib2.Request(url)
         opener = urllib2.build_opener()

@@ -2,17 +2,35 @@ import fresh_tomatoes
 import media
 
 
-# Created instance of the class Movie
-movie1 = media.Movie("Terminator",
-                    "http://img.moviepostershop.com/titanic-movie-poster-1997-1020339699.jpg",
-                    "https://www.youtube.com/watch?v=sA4FQfNTvm4")
+# Created instances of the class Movie Manually
+titanic = media.Movie("Titanic",
+                    "https://upload.wikimedia.org/wikipedia/en/2/22/Titanic_poster.jpg",
+                    "https://www.youtube.com/watch?v=2e-eXJ6HgkQ")
 
 
-movie2 = media.Movie("Terminator")
+wonder_woman = media.Movie("Wonder Woman",
+                    "https://upload.wikimedia.org/wikipedia/en/e/ed/Wonder_Woman_%282017_film%29.jpg",
+                    "https://www.youtube.com/watch?v=5lGoQhFb4NM")
+
+
+terminator_salvation = media.Movie("Terminator Salvation",
+                    "https://upload.wikimedia.org/wikipedia/en/9/95/Terminator-salvation-poster.jpg",
+                    "https://www.youtube.com/watch?v=-Czz-TcWCkA")
+
+
+
+# Created instances of the class Movie by just providing the movie name
+
+ex_machina = media.Movie("Ex Machina")
+
+the_martian = media.Movie("The Martian")
+
+logan = media.Movie("Logan")
+
+
 
 # Create Movie List and add Movies inside
-movies = [movie1, movie2]
-
+movies = [titanic, wonder_woman, terminator_salvation, ex_machina, the_martian]
 
 
 

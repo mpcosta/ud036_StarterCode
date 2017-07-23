@@ -116,6 +116,10 @@ main_page_content = '''
       {movie_tiles}
     </div>
   </body>
+<footer style="position: relative;">
+  <p style="position: fixed;bottom:0;left: 0; margin-left: 10px;"> This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
+  <img style="width: 150px;position: fixed; bottom:0;right: 0; margin:10px;" src="https://www.themoviedb.org/assets/static_cache/bb45549239e25f1770d5f76727bcd7c0/images/v4/logos/408x161-powered-by-rectangle-blue.png"/>
+</footer>
 </html>
 '''
 
