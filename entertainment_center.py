@@ -21,17 +21,15 @@ terminator_salvation = media.Movie("Terminator Salvation",
 
 # Created instances of the class Movie by just providing the movie name
 
-#ex_machina = media.Movie("Ex Machina")
+ex_machina = media.Movie("Ex Machina")
 
-#the_martian = media.Movie("The Martian")
+the_martian = media.Movie("The Martian")
 
-#logan = media.Movie("Logan")
-
+logan = media.Movie("Logan")
 
 
 # Create Movie List and add Movies inside
-#movies = [titanic, wonder_woman, terminator_salvation, ex_machina, the_martian]
-movies = [titanic, wonder_woman]
+movies = [titanic, wonder_woman, terminator_salvation, ex_machina, the_martian, logan]
 
 
 # Called the method open_movies_page in order to create the movies webpage
